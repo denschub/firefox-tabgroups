@@ -9,7 +9,7 @@
 
   "main": "index.js",
   "engines": {
-    "firefox": ">=38.0a1"
+    "firefox": ">=45.0a1"
   },
   "permissions": {
     "private-browsing": true
