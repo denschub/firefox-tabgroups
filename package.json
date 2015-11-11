@@ -6,7 +6,6 @@
   "description": "An add-on to replace the removed TabView/TabGroups/Panorama.",
   "author": "Dennis Schubert <mozilla@dennis-schubert.de>",
   "license": "MIT",
-
   "main": "index.js",
   "permissions": {
     "private-browsing": true
