@@ -23,8 +23,8 @@ groupsPanel.on("hide", () => {
 groupsPanel.on("show", () => {
   let currentWindow = WindowUtils.getMostRecentBrowserWindow();
 
-  groupsPanel.port.emit(
-    "TablistChange",
-    Storage.getTabs(currentWindow)
-  );
+  groupsPanel.port.emit("TablistChange", {
+    groups: Storage.getGroups(currentWindow),
+    tabs: Storage.getGroupedTabs(currentWindow)
+  });
 });
