@@ -1,0 +1,17 @@
+{
+  "id": "tabgroups@schub.io",
+  "name": "tabgroups",
+  "version": "0.0.1",
+  "title": "Tab Groups",
+  "description": "An add-on to replace the removed TabView/TabGroups/Panorama.",
+  "author": "Dennis Schubert <mozilla@dennis-schubert.de>",
+  "license": "MIT",
+
+  "main": "index.js",
+  "engines": {
+    "firefox": ">=38.0a1"
+  },
+  "permissions": {
+    "private-browsing": true
+  }
+}
