@@ -5,8 +5,17 @@ const {SessionStorage} = require("lib/storage/session");
 
 const Storage = new SessionStorage();
 
-const showPanelButton = Ui.PanelButton();
 const groupsPanel = Ui.GroupsPanel();
+const showPanelButton = Ui.PanelButton();
+
+Ui.GroupsHotkey(() => {
+  if (groupsPanel.isShowing) {
+    groupsPanel.hide();
+  } else {
+    groupsPanel.show({position: showPanelButton});
+    showPanelButton.state("window", {checked: true});
+  }
+});
 
 showPanelButton.on("change", (state) => {
   if (!state.checked) {
