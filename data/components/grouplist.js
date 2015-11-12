@@ -5,13 +5,7 @@ const GroupList = (() => {
         React.DOM.div(
           {},
           this.props.groups.map((group) => {
-            return React.createElement(
-              Group,
-              {
-                key: group.id,
-                group: group
-              }
-            )
+            return React.createElement(Group, {key: group.id, group: group});
           })
         )
       );

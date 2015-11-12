@@ -4,13 +4,7 @@ const TabList = React.createClass({
       React.DOM.ul(
         { className: "tab-list" },
         this.props.tabs.map((tab) => {
-          return React.createElement(
-            Tab,
-            {
-              key: tab.index,
-              tab: tab
-            }
-          )
+          return React.createElement(Tab, {key: tab.index, tab: tab});
         })
       )
     );
