@@ -31,9 +31,11 @@ groupsPanel.on("hide", () => {
 
 groupsPanel.on("show", () => {
   let currentWindow = WindowUtils.getMostRecentBrowserWindow();
+  let groups = Storage.getGroups(currentWindow);
+  let tabs = Storage.getGroupedTabs(currentWindow);
 
-  groupsPanel.port.emit("TabgroupsChanged", {
-    groups: Storage.getGroups(currentWindow),
-    tabs: Storage.getGroupedTabs(currentWindow)
-  });
+  groupsPanel.port.emit("TabgroupsChanged", groups.map((group) => {
+    group.tabs = tabs[group.id];
+    return group;
+  }));
 });
