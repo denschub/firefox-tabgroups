@@ -1,8 +1,8 @@
-const App = React.createClass({
+const Group = React.createClass({
   render: function() {
     return (
       React.createElement(
-        GroupList,
+        TabList,
         {}
       )
     );
