@@ -1,9 +1,9 @@
 const Tab = React.createClass({
   render: function() {
     return (
-      React.DOM.div(
+      React.DOM.li(
         {},
-        "Uh, oh, it's a tab!"
+        this.props.tab.title
       )
     );
   }
