@@ -32,7 +32,7 @@ groupsPanel.on("hide", () => {
 groupsPanel.on("show", () => {
   let currentWindow = WindowUtils.getMostRecentBrowserWindow();
 
-  groupsPanel.port.emit("TablistChange", {
+  groupsPanel.port.emit("TabgroupsChanged", {
     groups: Storage.getGroups(currentWindow),
     tabs: Storage.getGroupedTabs(currentWindow)
   });

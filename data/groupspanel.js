@@ -1,3 +1,14 @@
-self.port.on("TablistChange", (tabs) => {
-  document.getElementById("dbg").textContent = JSON.stringify(tabs, null, 2);
+const store = Redux.createStore(Reducer);
+
+ReactDOM.render(
+  React.createElement(
+    ReactRedux.Provider,
+    {store: store},
+    React.createElement(App, {})
+  ),
+  document.getElementById("content")
+);
+
+self.port.on("TabgroupsChanged", (tabgroups) => {
+  store.dispatch(ActionCreators.setTabgroups(tabgroups));
 });
