@@ -87,10 +87,10 @@ TabGroups.prototype = {
   bindPanelButtonEvents: function() {
     this._panelButton.on("change", (state) => {
       if (!state.checked) {
-        return;
+        this._groupsPanel.hide();
+      } else {
+        this._groupsPanel.show({position: this._panelButton});
       }
-
-      this._groupsPanel.show({position: this._panelButton});
     });
   },
 
