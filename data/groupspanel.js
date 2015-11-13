@@ -1,6 +1,6 @@
 const store = Redux.createStore(Reducer);
 
-self.port.on("TabgroupsChanged", (tabgroups) => {
+addon.port.on("TabgroupsChanged", (tabgroups) => {
   ReactDOM.render(
     React.createElement(
       ReactRedux.Provider,

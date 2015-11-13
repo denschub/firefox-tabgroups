@@ -34,27 +34,6 @@ TabGroups.prototype = {
 
   createGroupsPanel: function() {
     this._groupsPanel = Panel({
-      contentScriptFile: [
-        "vendor/react-0.14.2.js",
-        "vendor/react-dom-0.14.2.min.js",
-        "vendor/redux.min.js",
-        "vendor/react-redux.min.js",
-        "vendor/immutable.min.js",
-
-        "action_creators.js",
-        "reducer.js",
-        "components/app.js",
-        "components/group.js",
-        "components/grouplist.js",
-        "components/tab.js",
-        "components/tablist.js",
-        "groupspanel.js"
-      ].map(self.data.url),
-      contentStyleFile: [
-        "groupspanel.css"
-      ].map((file) => {
-        return self.data.url("assets/css/" + file);
-      }),
       contentURL: self.data.url("groupspanel.html")
     });
   },
