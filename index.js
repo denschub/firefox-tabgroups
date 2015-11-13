@@ -1,6 +1,7 @@
 const WindowUtils = require("sdk/window/utils");
 
 const Ui = require("lib/ui");
+const Prefs = require("sdk/simple-prefs");
 const {SessionStorage} = require("lib/storage/session");
 
 const Storage = new SessionStorage();
@@ -8,12 +9,20 @@ const Storage = new SessionStorage();
 const groupsPanel = Ui.GroupsPanel();
 const showPanelButton = Ui.PanelButton();
 
-Ui.GroupsHotkey(() => {
-  if (groupsPanel.isShowing) {
-    groupsPanel.hide();
-  } else {
-    groupsPanel.show({position: showPanelButton});
-    showPanelButton.state("window", {checked: true});
+let hotkey = null;
+
+if (Prefs.prefs.bindPanoramaShortcut) {
+  hotkey = Ui.GroupsHotkey(groupsPanel, showPanelButton);
+}
+
+Prefs.on("bindPanoramaShortcut", () => {
+  if (Prefs.prefs.bindPanoramaShortcut) {
+    if (!hotkey) {
+      hotkey = Ui.GroupsHotkey(groupsPanel, showPanelButton);
+    }
+  } else if (hotkey) {
+    hotkey.destroy();
+    hotkey = null;
   }
 });
 
