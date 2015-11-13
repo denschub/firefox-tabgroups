@@ -28,8 +28,10 @@
     "XPCOMUtils": true,
     "XPCNativeWrapper": true,
 
+    "addon": true,
     "ActionCreators": true,
     "App": true,
+    "classNames": true,
     "Group": true,
     "GroupList": true,
     "Immutable": true,

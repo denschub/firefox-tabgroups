@@ -1,12 +1,14 @@
 const self = require("sdk/self");
-var _ = require("sdk/l10n").get;
+const _ = require("sdk/l10n").get;
 
 const {Hotkey} = require("sdk/hotkeys");
 const {Panel} = require("sdk/panel");
 const Prefs = require("sdk/simple-prefs");
-const {SessionStorage} = require("lib/storage/session");
 const {ToggleButton} = require("sdk/ui/button/toggle");
 const WindowUtils = require("sdk/window/utils");
+
+const Utils = require("lib/utils");
+const {SessionStorage} = require("lib/storage/session");
 
 function TabGroups() {
   this._groupsPanel = null;
@@ -34,7 +36,12 @@ TabGroups.prototype = {
 
   createGroupsPanel: function() {
     this._groupsPanel = Panel({
-      contentURL: self.data.url("groupspanel.html")
+      contentURL: self.data.url("groupspanel.html"),
+      contentScriptOptions: {
+        l10n: Utils.getL10nStrings([
+          "unnamed_group"
+        ])
+      }
     });
   },
 

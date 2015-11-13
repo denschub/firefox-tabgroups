@@ -2,8 +2,8 @@ const GroupList = (() => {
   const GroupListStandalone = React.createClass({
     render: function() {
       return (
-        React.DOM.div(
-          {},
+        React.DOM.ul(
+          {className: "group-list"},
           this.props.groups.map((group) => {
             return React.createElement(Group, {key: group.id, group: group});
           })
