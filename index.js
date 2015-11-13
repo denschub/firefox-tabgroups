@@ -1,4 +1,5 @@
 const self = require("sdk/self");
+var _ = require("sdk/l10n").get;
 
 const {Hotkey} = require("sdk/hotkeys");
 const {Panel} = require("sdk/panel");
@@ -60,7 +61,7 @@ TabGroups.prototype = {
         "32": self.data.url("assets/images/icon-32.png"),
         "64": self.data.url("assets/images/icon-64.png")
       },
-      label: "Show Tab Groups"
+      label: _("panelButton_label")
     });
   },
 

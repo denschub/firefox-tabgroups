@@ -14,7 +14,6 @@
     {
       "name": "bindPanoramaShortcut",
       "title": "Listen to Ctrl/Cmd-Shift-E",
-      "description": "Whether or not this extension should listen to Ctrl/Cmd-Shift-E to open its panel.",
       "type": "bool",
       "value": false
     }
