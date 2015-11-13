@@ -55,7 +55,10 @@ const Group = React.createClass({
               )
             ]
           ),
-          React.createElement(TabList, {tabs: this.props.group.tabs})
+          this.state.expanded && React.createElement(
+            TabList,
+            {tabs: this.props.group.tabs}
+          )
         ]
       )
     );
