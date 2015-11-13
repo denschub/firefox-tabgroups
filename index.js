@@ -96,6 +96,10 @@ TabGroups.prototype = {
       if (!state.checked) {
         this._groupsPanel.hide();
       } else {
+        if (this._groupsPanel.isShowing) {
+          this._groupsPanel.hide();
+        }
+
         this._groupsPanel.show({position: this._panelButton});
       }
     });
@@ -104,6 +108,7 @@ TabGroups.prototype = {
   bindPanelEvents: function() {
     this._groupsPanel.on("hide", () => {
       this._panelButton.state("window", {checked: false});
+      this._groupsPanel.port.emit("TabgroupsChanged", {});
     });
 
     this._groupsPanel.on("show", () => {

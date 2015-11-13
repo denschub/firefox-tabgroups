@@ -53,7 +53,7 @@ const Group = React.createClass({
                   })
                 ]
               )
-             ]
+            ]
           ),
           React.createElement(TabList, {tabs: this.props.group.tabs})
         ]
