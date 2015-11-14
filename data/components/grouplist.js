@@ -1,5 +1,9 @@
 const GroupList = (() => {
   const GroupListStandalone = React.createClass({
+    componentDidUpdate: function() {
+      resizePanel();
+    },
+
     render: function() {
       let childs;
       if (this.props.groups.size) {

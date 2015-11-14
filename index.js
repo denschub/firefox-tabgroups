@@ -36,6 +36,7 @@ TabGroups.prototype = {
 
   createGroupsPanel: function() {
     this._groupsPanel = Panel({
+      height: 1,
       contentURL: self.data.url("groupspanel.html"),
       contentScriptOptions: {
         l10n: Utils.getL10nStrings([
@@ -124,6 +125,13 @@ TabGroups.prototype = {
         group.tabs = tabs[group.id];
         return group;
       }));
+    });
+
+    this._groupsPanel.port.on("ResizePanel", (size) => {
+      this._groupsPanel.resize(
+        this._groupsPanel.width,
+        size.height + 18
+      );
     });
   }
 };

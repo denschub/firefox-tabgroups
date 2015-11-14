@@ -1,5 +1,17 @@
 const store = Redux.createStore(Reducer);
 
+/**
+ * Global function to retrigger the reizing
+ *
+ * TODO build into the react components
+ */
+function resizePanel() {
+  addon.port.emit("ResizePanel", {
+    width: document.body.clientWidth,
+    height: document.body.clientHeight
+  })
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     React.createElement(

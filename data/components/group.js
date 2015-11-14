@@ -5,6 +5,10 @@ const Group = React.createClass({
     };
   },
 
+  componentDidUpdate: function() {
+    resizePanel();
+  },
+
   getTitle: function() {
     return this.props.group.title || addon.options.l10n.unnamed_group;
   },
