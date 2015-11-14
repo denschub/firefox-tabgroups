@@ -122,7 +122,7 @@ TabGroups.prototype = {
         return Object.assign({}, group, {
           tabs: tabs[group.id]
         });
-      })
+      });
 
       this._groupsPanel.port.emit("TabgroupsChanged", groups);
     });

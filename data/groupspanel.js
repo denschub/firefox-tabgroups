@@ -9,7 +9,7 @@ function resizePanel() {
   addon.port.emit("ResizePanel", {
     width: document.body.clientWidth,
     height: document.body.clientHeight
-  })
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {

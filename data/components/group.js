@@ -6,7 +6,7 @@ const Group = React.createClass({
   },
 
   componentDidUpdate: function() {
-    resizePanel();
+    window.resizePanel();
   },
 
   getTitle: function() {
@@ -20,14 +20,6 @@ const Group = React.createClass({
       group: true
     });
 
-    let expanderClasses = classNames({
-      "group-expand": true,
-      "fa": true,
-      "fa-fw": true,
-      "fa-chevron-down": !this.state.expanded,
-      "fa-chevron-up": this.state.expanded
-    });
-
     return (
       React.DOM.li(
         {
@@ -37,22 +29,12 @@ const Group = React.createClass({
         React.DOM.span(
           {className: "group-title"},
           this.getTitle(),
-          React.DOM.span(
+          React.createElement(
+            GroupControls,
             {
-              className: "group-controls"
-            },
-            React.DOM.i({
-              className: "group-edit fa fa-fw fa-pencil",
-              onClick: this.handleEditClick
-            }),
-            React.DOM.i({
-              className: "group-close fa fa-fw fa-times",
-              onClick: this.handleCloserClick
-            }),
-            React.DOM.i({
-              className: expanderClasses,
-              onClick: this.handleExpanderClick
-            })
+              expanded: this.state.expanded,
+              onExpand: this.handleExpanderClick
+            }
           )
         ),
         this.state.expanded && React.createElement(
@@ -61,15 +43,6 @@ const Group = React.createClass({
         )
       )
     );
-  },
-
-  handleGroupClick: function() {
-  },
-
-  handleEditClick: function() {
-  },
-
-  handleCloserClick: function() {
   },
 
   handleExpanderClick: function() {

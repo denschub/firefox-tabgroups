@@ -1,7 +1,7 @@
 const GroupList = (() => {
   const GroupListStandalone = React.createClass({
     componentDidUpdate: function() {
-      resizePanel();
+      window.resizePanel();
     },
 
     render: function() {
