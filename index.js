@@ -113,18 +113,18 @@ TabGroups.prototype = {
   bindPanelEvents: function() {
     this._groupsPanel.on("hide", () => {
       this._panelButton.state("window", {checked: false});
-      this._groupsPanel.port.emit("TabgroupsChanged", {});
     });
 
     this._groupsPanel.on("show", () => {
       let currentWindow = WindowUtils.getMostRecentBrowserWindow();
-      let groups = this._storage.getGroups(currentWindow);
       let tabs = this._storage.getGroupedTabs(currentWindow);
+      let groups = this._storage.getGroups(currentWindow).map((group) => {
+        return Object.assign({}, group, {
+          tabs: tabs[group.id]
+        });
+      })
 
-      this._groupsPanel.port.emit("TabgroupsChanged", groups.map((group) => {
-        group.tabs = tabs[group.id];
-        return group;
-      }));
+      this._groupsPanel.port.emit("TabgroupsChanged", groups);
     });
 
     this._groupsPanel.port.on("ResizePanel", (size) => {

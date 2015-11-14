@@ -34,37 +34,31 @@ const Group = React.createClass({
           className: groupClasses,
           onClick: this.handleGroupClick
         },
-        [
+        React.DOM.span(
+          {className: "group-title"},
+          this.getTitle(),
           React.DOM.span(
-            {className: "group-title"},
-            [
-              this.getTitle(),
-              React.DOM.span(
-                {
-                  className: "group-controls"
-                },
-                [
-                  React.DOM.i({
-                    className: "group-edit fa fa-fw fa-pencil",
-                    onClick: this.handleEditClick
-                  }),
-                  React.DOM.i({
-                    className: "group-close fa fa-fw fa-times",
-                    onClick: this.handleCloserClick
-                  }),
-                  React.DOM.i({
-                    className: expanderClasses,
-                    onClick: this.handleExpanderClick
-                  })
-                ]
-              )
-            ]
-          ),
-          this.state.expanded && React.createElement(
-            TabList,
-            {tabs: this.props.group.tabs}
+            {
+              className: "group-controls"
+            },
+            React.DOM.i({
+              className: "group-edit fa fa-fw fa-pencil",
+              onClick: this.handleEditClick
+            }),
+            React.DOM.i({
+              className: "group-close fa fa-fw fa-times",
+              onClick: this.handleCloserClick
+            }),
+            React.DOM.i({
+              className: expanderClasses,
+              onClick: this.handleExpanderClick
+            })
           )
-        ]
+        ),
+        this.state.expanded && React.createElement(
+          TabList,
+          {tabs: this.props.group.tabs}
+        )
       )
     );
   },
