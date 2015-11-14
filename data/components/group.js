@@ -17,7 +17,8 @@ const Group = React.createClass({
     });
 
     let expanderClasses = classNames({
-      fa: true,
+      "group-expand": true,
+      "fa": true,
       "fa-fw": true,
       "fa-chevron-down": !this.state.expanded,
       "fa-chevron-up": this.state.expanded
@@ -40,11 +41,11 @@ const Group = React.createClass({
                 },
                 [
                   React.DOM.i({
-                    className: "fa fa-fw fa-pencil",
+                    className: "group-edit fa fa-fw fa-pencil",
                     onClick: this.handleEditClick
                   }),
                   React.DOM.i({
-                    className: "fa fa-fw fa-times",
+                    className: "group-close fa fa-fw fa-times",
                     onClick: this.handleCloserClick
                   }),
                   React.DOM.i({

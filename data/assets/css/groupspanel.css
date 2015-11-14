@@ -51,8 +51,9 @@ ul, li {
 }
 
 .group-controls {
-  display: none;
+  display: inline-block;
   font-size: 120%;
+  opacity: 0.7;
   position: absolute;
   right: 5px;
   top: 4px;
@@ -62,6 +63,12 @@ ul, li {
   padding-right: 55px;
 }
 
-  .group:hover .group-controls {
-    display: inline-block;
+  .group .group-controls .group-close,
+  .group .group-controls .group-edit {
+    display: none;
   }
+
+    .group:hover .group-controls .group-close,
+    .group:hover .group-controls .group-edit {
+      display: inline-block;
+    }
