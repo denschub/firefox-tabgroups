@@ -5,26 +5,16 @@ const GroupList = (() => {
     },
 
     render: function() {
-      let childs;
-      if (this.props.groups.size) {
-        childs = React.DOM.ul(
-          {className: "group-list"},
-          this.props.groups.map((group) => {
-            return React.createElement(Group, {
-              key: group.id,
-              group: group,
-              uiHeightChanged: this.props.uiHeightChanged
-            });
-          })
-        );
-      } else {
-        childs = React.DOM.p(
-          {},
-          "No groups available!"
-        );
-      }
-
-      return childs;
+      return React.DOM.ul(
+        {className: "group-list"},
+        this.props.groups.map((group) => {
+          return React.createElement(Group, {
+            key: group.id,
+            group: group,
+            uiHeightChanged: this.props.uiHeightChanged
+          });
+        })
+      );
     }
   });
 

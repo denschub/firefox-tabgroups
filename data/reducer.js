@@ -1,5 +1,5 @@
 const INITIAL_STATE = Immutable.fromJS({
-  tabgroups: {}
+  tabgroups: []
 });
 
 const Reducer = function(state = INITIAL_STATE, action) {
