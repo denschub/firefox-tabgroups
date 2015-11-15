@@ -6,7 +6,7 @@ const Group = React.createClass({
   },
 
   componentDidUpdate: function() {
-    window.resizePanel();
+    this.props.uiHeightChanged && this.props.uiHeightChanged();
   },
 
   getTitle: function() {
