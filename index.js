@@ -9,13 +9,14 @@ const WindowUtils = require("sdk/window/utils");
 
 const Utils = require("lib/utils");
 const {SessionStorage} = require("lib/storage/session");
+const {TabManager} = require("lib/tabmanager");
 
 function TabGroups() {
   this._groupsPanel = null;
   this._hotkey = null;
   this._panelButton = null;
 
-  this._storage = new SessionStorage();
+  this._tabs = new TabManager(new SessionStorage());
 
   this.init();
   this.bindEvents();
@@ -117,12 +118,7 @@ TabGroups.prototype = {
 
     this._groupsPanel.on("show", () => {
       let currentWindow = WindowUtils.getMostRecentBrowserWindow();
-      let tabs = this._storage.getGroupedTabs(currentWindow);
-      let groups = this._storage.getGroups(currentWindow).map((group) => {
-        return Object.assign({}, group, {
-          tabs: tabs[group.id]
-        });
-      });
+      let groups = this._tabs.getGroupsWithTabs(currentWindow);
 
       this._groupsPanel.port.emit("TabgroupsChanged", groups);
     });

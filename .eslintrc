@@ -33,6 +33,7 @@
     "App": true,
     "classNames": true,
     "Group": true,
+    "GroupControls": true,
     "GroupList": true,
     "Immutable": true,
     "React": true,
