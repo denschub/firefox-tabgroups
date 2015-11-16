@@ -120,10 +120,10 @@ TabGroups.prototype = {
       let currentWindow = WindowUtils.getMostRecentBrowserWindow();
       let groups = this._tabs.getGroupsWithTabs(currentWindow);
 
-      this._groupsPanel.port.emit("TabgroupsChanged", groups);
+      this._groupsPanel.port.emit("Groups:Changed", groups);
     });
 
-    this._groupsPanel.port.on("ResizePanel", (size) => {
+    this._groupsPanel.port.on("UI:Resize", (size) => {
       this._groupsPanel.resize(
         this._groupsPanel.width,
         size.height + 18

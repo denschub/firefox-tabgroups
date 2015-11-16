@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
       {store: store},
       React.createElement(App, {
         uiHeightChanged: () => {
-          addon.port.emit("ResizePanel", {
+          addon.port.emit("UI:Resize", {
             width: document.body.clientWidth,
             height: document.body.clientHeight
           });
@@ -18,6 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 });
 
-addon.port.on("TabgroupsChanged", (tabgroups) => {
+addon.port.on("Groups:Changed", (tabgroups) => {
   store.dispatch(ActionCreators.setTabgroups(tabgroups));
 });
