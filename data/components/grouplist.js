@@ -1,5 +1,9 @@
 const GroupList = (() => {
   const GroupListStandalone = React.createClass({
+    propTypes: {
+      groups: React.PropTypes.object.isRequired
+    },
+
     componentDidUpdate: function() {
       this.props.uiHeightChanged && this.props.uiHeightChanged();
     },

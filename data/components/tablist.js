@@ -1,4 +1,8 @@
 const TabList = React.createClass({
+  propTypes: {
+    tabs: React.PropTypes.array.isRequired
+  },
+
   render: function() {
     return (
       React.DOM.ul(

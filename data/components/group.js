@@ -1,4 +1,9 @@
 const Group = React.createClass({
+  propTypes: {
+    group: React.PropTypes.object.isRequired,
+    uiHeightChanged: React.PropTypes.func
+  },
+
   getInitialState: function() {
     return {
       expanded: false

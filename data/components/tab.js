@@ -1,4 +1,8 @@
 const Tab = React.createClass({
+  propTypes: {
+    tab: React.PropTypes.object.isRequired
+  },
+
   render: function() {
     let tabClasses = classNames({
       active: this.props.tab.active,

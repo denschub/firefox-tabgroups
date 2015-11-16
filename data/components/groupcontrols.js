@@ -1,4 +1,11 @@
 const GroupControls = React.createClass({
+  propTypes: {
+    expanded: React.PropTypes.bool.isRequired,
+    onClose: React.PropTypes.func,
+    onEdit: React.PropTypes.func,
+    onExpand: React.PropTypes.func
+  },
+
   render: function() {
     let expanderClasses = classNames({
       "group-expand": true,
