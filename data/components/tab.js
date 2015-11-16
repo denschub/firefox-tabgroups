@@ -1,5 +1,6 @@
 const Tab = React.createClass({
   propTypes: {
+    onTabClick: React.PropTypes.func,
     tab: React.PropTypes.object.isRequired
   },
 
@@ -10,7 +11,18 @@ const Tab = React.createClass({
     });
 
     return (
-      React.DOM.li({className: tabClasses}, this.props.tab.title)
+      React.DOM.li({
+        className: tabClasses,
+        onClick: this.handleTabClick
+      }, this.props.tab.title)
+    );
+  },
+
+  handleTabClick: function() {
+    let tab = this.props.tab;
+    this.props.onTabClick(
+      tab.group,
+      tab.index
     );
   }
 });

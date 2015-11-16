@@ -1,6 +1,7 @@
 const Group = React.createClass({
   propTypes: {
     group: React.PropTypes.object.isRequired,
+    onTabClick: React.PropTypes.func,
     uiHeightChanged: React.PropTypes.func
   },
 
@@ -44,7 +45,10 @@ const Group = React.createClass({
         ),
         this.state.expanded && React.createElement(
           TabList,
-          {tabs: this.props.group.tabs}
+          {
+            tabs: this.props.group.tabs,
+            onTabClick: this.props.onTabClick
+          }
         )
       )
     );

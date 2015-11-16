@@ -4,6 +4,7 @@ const _ = require("sdk/l10n").get;
 const {Hotkey} = require("sdk/hotkeys");
 const {Panel} = require("sdk/panel");
 const Prefs = require("sdk/simple-prefs");
+const TabsUtils = require("sdk/tabs/utils");
 const {ToggleButton} = require("sdk/ui/button/toggle");
 const WindowUtils = require("sdk/window/utils");
 
@@ -116,19 +117,40 @@ TabGroups.prototype = {
       this._panelButton.state("window", {checked: false});
     });
 
-    this._groupsPanel.on("show", () => {
-      let currentWindow = WindowUtils.getMostRecentBrowserWindow();
-      let groups = this._tabs.getGroupsWithTabs(currentWindow);
+    this._groupsPanel.on("show", this.refreshUi.bind(this));
 
-      this._groupsPanel.port.emit("Groups:Changed", groups);
-    });
+    this._groupsPanel.port.on("UI:Resize", this.resizePanel.bind(this));
+    this._groupsPanel.port.on("Tab:Select", this.onTabSelect.bind(this));
+  },
 
-    this._groupsPanel.port.on("UI:Resize", (size) => {
-      this._groupsPanel.resize(
-        this._groupsPanel.width,
-        size.height + 18
-      );
-    });
+  refreshUi: function() {
+    let groups = this._tabs.getGroupsWithTabs(this._getWindow());
+
+    this._groupsPanel.port.emit("Groups:Changed", groups);
+  },
+
+  resizePanel: function(dimensions) {
+    this._groupsPanel.resize(
+      this._groupsPanel.width,
+      dimensions.height + 18
+    );
+  },
+
+  onTabSelect: function(event) {
+    this._tabs.selectTab(
+      this._getTabBrowser(),
+      event.tabIndex,
+      event.groupID
+    );
+    this.refreshUi();
+  },
+
+  _getWindow: function() {
+    return WindowUtils.getMostRecentBrowserWindow();
+  },
+
+  _getTabBrowser: function() {
+    return TabsUtils.getTabBrowser(this._getWindow());
   }
 };
 
