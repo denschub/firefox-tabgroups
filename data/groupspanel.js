@@ -8,8 +8,12 @@ const Actions = {
     });
   },
 
-  selectTab: function(groupId, tabIndex) {
-    addon.port.emit("Tab:Select", {groupId, tabIndex});
+  selectGroup: function(groupID) {
+    addon.port.emit("Group:Select", {groupID});
+  },
+
+  selectTab: function(groupID, tabIndex) {
+    addon.port.emit("Tab:Select", {groupID, tabIndex});
   }
 };
 
@@ -19,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ReactRedux.Provider,
       {store: store},
       React.createElement(App, {
+        onGroupClick: Actions.selectGroup,
         onTabClick: Actions.selectTab,
         uiHeightChanged: Actions.uiHeightChanged
       })

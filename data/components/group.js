@@ -1,6 +1,7 @@
 const Group = React.createClass({
   propTypes: {
     group: React.PropTypes.object.isRequired,
+    onGroupClick: React.PropTypes.func,
     onTabClick: React.PropTypes.func,
     uiHeightChanged: React.PropTypes.func
   },
@@ -54,7 +55,13 @@ const Group = React.createClass({
     );
   },
 
-  handleExpanderClick: function() {
+  handleGroupClick: function(event) {
+    event.stopPropagation();
+    this.props.onGroupClick(this.props.group.id);
+  },
+
+  handleExpanderClick: function(event) {
+    event.stopPropagation();
     this.setState({expanded: !this.state.expanded});
   }
 });

@@ -18,7 +18,9 @@ const Tab = React.createClass({
     );
   },
 
-  handleTabClick: function() {
+  handleTabClick: function(event) {
+    event.stopPropagation();
+
     let tab = this.props.tab;
     this.props.onTabClick(
       tab.group,

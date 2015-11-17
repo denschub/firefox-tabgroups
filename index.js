@@ -119,8 +119,9 @@ TabGroups.prototype = {
 
     this._groupsPanel.on("show", this.refreshUi.bind(this));
 
-    this._groupsPanel.port.on("UI:Resize", this.resizePanel.bind(this));
+    this._groupsPanel.port.on("Group:Select", this.onGroupSelect.bind(this));
     this._groupsPanel.port.on("Tab:Select", this.onTabSelect.bind(this));
+    this._groupsPanel.port.on("UI:Resize", this.resizePanel.bind(this));
   },
 
   refreshUi: function() {
@@ -136,8 +137,18 @@ TabGroups.prototype = {
     );
   },
 
+  onGroupSelect: function(event) {
+    this._tabs.selectGroup(
+      this._getWindow(),
+      this._getTabBrowser(),
+      event.groupID
+    );
+    this.refreshUi();
+  },
+
   onTabSelect: function(event) {
     this._tabs.selectTab(
+      this._getWindow(),
       this._getTabBrowser(),
       event.tabIndex,
       event.groupID
