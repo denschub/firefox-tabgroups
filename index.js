@@ -42,6 +42,7 @@ TabGroups.prototype = {
       contentURL: self.data.url("groupspanel.html"),
       contentScriptOptions: {
         l10n: Utils.getL10nStrings([
+          "add_group",
           "unnamed_group"
         ])
       }
@@ -119,6 +120,7 @@ TabGroups.prototype = {
 
     this._groupsPanel.on("show", this.refreshUi.bind(this));
 
+    this._groupsPanel.port.on("Group:Add", this.onGroupAdd.bind(this));
     this._groupsPanel.port.on("Group:Select", this.onGroupSelect.bind(this));
     this._groupsPanel.port.on("Tab:Select", this.onTabSelect.bind(this));
     this._groupsPanel.port.on("UI:Resize", this.resizePanel.bind(this));
@@ -136,6 +138,14 @@ TabGroups.prototype = {
       dimensions.height + 18
     );
   },
+
+  onGroupAdd: function() {
+    this._tabs.addGroup(
+      this._getWindow()
+    );
+    this.refreshUi();
+  },
+
 
   onGroupSelect: function(event) {
     this._tabs.selectGroup(

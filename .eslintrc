@@ -33,6 +33,7 @@
     "App": true,
     "classNames": true,
     "Group": true,
+    "GroupAddButton": true,
     "GroupControls": true,
     "GroupList": true,
     "Immutable": true,

@@ -2,6 +2,7 @@ const GroupList = (() => {
   const GroupListStandalone = React.createClass({
     propTypes: {
       groups: React.PropTypes.object.isRequired,
+      onGroupAddClick: React.PropTypes.func,
       onGroupClick: React.PropTypes.func,
       onTabClick: React.PropTypes.func,
       uiHeightChanged: React.PropTypes.func
@@ -22,7 +23,13 @@ const GroupList = (() => {
             onTabClick: this.props.onTabClick,
             uiHeightChanged: this.props.uiHeightChanged
           });
-        })
+        }),
+        React.createElement(
+          GroupAddButton,
+          {
+            onClick: this.props.onGroupAddClick
+          }
+        )
       );
     }
   });

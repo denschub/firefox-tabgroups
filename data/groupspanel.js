@@ -1,6 +1,10 @@
 const store = Redux.createStore(Reducer);
 
 const Actions = {
+  addGroup: function() {
+    addon.port.emit("Group:Add");
+  },
+
   uiHeightChanged: function() {
     addon.port.emit("UI:Resize", {
       width: document.body.clientWidth,
@@ -23,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ReactRedux.Provider,
       {store: store},
       React.createElement(App, {
+        onGroupAddClick: Actions.addGroup,
         onGroupClick: Actions.selectGroup,
         onTabClick: Actions.selectTab,
         uiHeightChanged: Actions.uiHeightChanged
