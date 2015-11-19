@@ -146,7 +146,6 @@ TabGroups.prototype = {
     this.refreshUi();
   },
 
-
   onGroupSelect: function(event) {
     this._tabs.selectGroup(
       this._getWindow(),
