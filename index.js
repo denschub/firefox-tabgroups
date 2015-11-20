@@ -50,15 +50,16 @@ TabGroups.prototype = {
   },
 
   createPanelButton: function() {
+    let iconBase = "chrome://tabgroups/content/icons/togglebutton/";
     this._panelButton = ToggleButton({
       id: "tabgroups-show",
       icon: {
         "16": Utils.themeSwitch({
-          dark: self.data.url("assets/images/icon-inverted-32.png"),
-          light: self.data.url("assets/images/icon-32.png")
+          dark: iconBase + "icon-inverted-32.png",
+          light: iconBase + "icon-32.png"
         }),
-        "32": self.data.url("assets/images/icon-32.png"),
-        "64": self.data.url("assets/images/icon-64.png")
+        "32": iconBase + "icon-32.png",
+        "64": iconBase + "icon-64.png"
       },
       label: _("panelButton_label")
     });

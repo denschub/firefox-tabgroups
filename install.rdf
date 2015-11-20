@@ -18,8 +18,10 @@
     </em:targetApplication>
 
     <em:name>Tab Groups</em:name>
-    <em:description>Provides features simmilar to the removed TabView/TabGroups/Panorama.</em:description>
+    <em:description>Provides tab grouping features similar to the removed TabView/TabGroups/Panorama features.</em:description>
     <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+    <em:iconURL>chrome://tabgroups/content/icons/extension-32.png</em:iconURL>
+    <em:icon64URL>chrome://tabgroups/content/icons/extension-32.png</em:icon64URL>
 
     <em:localized>
       <Description>
