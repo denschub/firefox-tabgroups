@@ -4,6 +4,7 @@ const GroupList = (() => {
       groups: React.PropTypes.object.isRequired,
       onGroupAddClick: React.PropTypes.func,
       onGroupClick: React.PropTypes.func,
+      onGroupCloseClick: React.PropTypes.func,
       onTabClick: React.PropTypes.func,
       uiHeightChanged: React.PropTypes.func
     },
@@ -20,6 +21,7 @@ const GroupList = (() => {
             key: group.id,
             group: group,
             onGroupClick: this.props.onGroupClick,
+            onGroupCloseClick: this.props.onGroupCloseClick,
             onTabClick: this.props.onTabClick,
             uiHeightChanged: this.props.uiHeightChanged
           });

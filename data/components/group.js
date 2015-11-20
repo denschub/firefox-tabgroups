@@ -2,6 +2,7 @@ const Group = React.createClass({
   propTypes: {
     group: React.PropTypes.object.isRequired,
     onGroupClick: React.PropTypes.func,
+    onGroupCloseClick: React.PropTypes.func,
     onTabClick: React.PropTypes.func,
     uiHeightChanged: React.PropTypes.func
   },
@@ -17,7 +18,9 @@ const Group = React.createClass({
   },
 
   getTitle: function() {
-    return this.props.group.title || addon.options.l10n.unnamed_group;
+    return this.props.group.title || (
+      addon.options.l10n.unnamed_group + " " + this.props.group.id
+    );
   },
 
   render: function() {
@@ -40,6 +43,7 @@ const Group = React.createClass({
             GroupControls,
             {
               expanded: this.state.expanded,
+              onClose: this.handleGroupCloseClick,
               onExpand: this.handleExpanderClick
             }
           )
@@ -53,6 +57,11 @@ const Group = React.createClass({
         )
       )
     );
+  },
+
+  handleGroupCloseClick: function(event) {
+    event.stopPropagation();
+    this.props.onGroupCloseClick(this.props.group.id);
   },
 
   handleGroupClick: function(event) {

@@ -5,6 +5,10 @@ const Actions = {
     addon.port.emit("Group:Add");
   },
 
+  closeGroup: function(groupID) {
+    addon.port.emit("Group:Close", {groupID});
+  },
+
   uiHeightChanged: function() {
     addon.port.emit("UI:Resize", {
       width: document.body.clientWidth,
@@ -29,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       React.createElement(App, {
         onGroupAddClick: Actions.addGroup,
         onGroupClick: Actions.selectGroup,
+        onGroupCloseClick: Actions.closeGroup,
         onTabClick: Actions.selectTab,
         uiHeightChanged: Actions.uiHeightChanged
       })
