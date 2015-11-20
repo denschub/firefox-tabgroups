@@ -69,7 +69,8 @@ ul, li {
 }
 
 .tab-icon {
-  max-height: 16px;
+  height: 16px;
+  width: 16px;
   margin-right: 1px;
   margin-bottom: 1px;
   margin-left: 4px;
