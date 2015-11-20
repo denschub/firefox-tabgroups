@@ -8,9 +8,10 @@ ul, li {
     list-style-type: none;
   }
 
-.group-title, .tab {
+.group-title {
   display: block;
   overflow: hidden;
+  padding-right: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -39,6 +40,10 @@ ul, li {
   position: relative;
 }
 
+  .tab {
+    padding: 0;
+  }
+
   .group:hover, .tab:hover {
     background-color: rgba(0, 0, 0, 0.06);
     border-color: rgba(0, 0, 0, 0.12);
@@ -52,6 +57,23 @@ ul, li {
   .expanded .tab-list {
     display: block;
   }
+
+.tab-title {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 32px);
+  padding: 5px 5px 1px;
+  margin-bottom: 1px;
+}
+
+.tab-icon {
+  max-height: 16px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  margin-left: 4px;
+}
 
 .expanded .group-title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
