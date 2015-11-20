@@ -2,8 +2,8 @@ content tabgroups content/
 
 # TODO
 # This is just a placeholder to remind me I have to replace the migrator
-# added in Bug 1221050.
+# that will be added in Bug 1221050.
 # I don't think overriding resource:// will work, so I have to find another
-# solution
+# solution after all the patches have landed and we have a fixed state.
 #
 # override resource:///modules/TabGroupsMigrator.jsm chrome://tabgroups/content/DummyTabGroupsMigrator.jsm

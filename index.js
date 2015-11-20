@@ -70,6 +70,11 @@ TabGroups.prototype = {
       return;
     }
 
+    /**
+     * Note: since this is intended to be released after 1222490 has landed,
+     * it is perfectly save to assume accel-shift-e is not used by anything
+     * else.
+     */
     this._hotkey = Hotkey({
       combo: "accel-shift-e",
       onPress: () => {
