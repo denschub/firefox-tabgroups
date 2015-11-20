@@ -23,6 +23,14 @@ ul, li {
     padding-right: 15px;
   }
 
+.group-title input {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin: 0;
+  padding: 1px;
+  width: calc(100% - 25px);
+}
+
 .group, .tab {
   border-radius: 3px;
   border: 1px solid transparent;
@@ -58,6 +66,10 @@ ul, li {
   right: 5px;
   top: 4px;
 }
+
+  .group.editing .group-controls {
+    top: 6px;
+  }
 
 .group:hover .group-title {
   padding-right: 55px;

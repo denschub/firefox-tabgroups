@@ -3,13 +3,16 @@ const Group = React.createClass({
     group: React.PropTypes.object.isRequired,
     onGroupClick: React.PropTypes.func,
     onGroupCloseClick: React.PropTypes.func,
+    onGroupTitleChange: React.PropTypes.func,
     onTabClick: React.PropTypes.func,
     uiHeightChanged: React.PropTypes.func
   },
 
   getInitialState: function() {
     return {
-      expanded: false
+      editing: false,
+      expanded: false,
+      newTitle: this.getTitle()
     };
   },
 
@@ -24,8 +27,25 @@ const Group = React.createClass({
   },
 
   render: function() {
+    let titleElement;
+    if (this.state.editing) {
+      titleElement = React.DOM.input(
+        {
+          type: "text",
+          defaultValue: this.getTitle(),
+          onChange: (event) => {
+            this.setState({newTitle: event.target.value});
+          },
+          onKeyUp: this.handleGroupTitleInputKey
+        }
+      );
+    } else {
+      titleElement = React.DOM.span({}, this.getTitle());
+    }
+
     let groupClasses = classNames({
       active: this.props.group.active,
+      editing: this.state.editing,
       expanded: this.state.expanded,
       group: true
     });
@@ -37,14 +57,20 @@ const Group = React.createClass({
           onClick: this.handleGroupClick
         },
         React.DOM.span(
-          {className: "group-title"},
-          this.getTitle(),
+          {
+            className: "group-title"
+          },
+          titleElement,
           React.createElement(
             GroupControls,
             {
+              editing: this.state.editing,
               expanded: this.state.expanded,
               onClose: this.handleGroupCloseClick,
-              onExpand: this.handleExpanderClick
+              onEdit: this.handleGroupEditClick,
+              onEditAbort: this.handleGroupEditAbortClick,
+              onEditSave: this.handleGroupEditSaveClick,
+              onExpand: this.handleGroupExpandClick
             }
           )
         ),
@@ -69,8 +95,31 @@ const Group = React.createClass({
     this.props.onGroupClick(this.props.group.id);
   },
 
-  handleExpanderClick: function(event) {
+  handleGroupEditClick: function(event) {
+    event.stopPropagation();
+    this.setState({editing: !this.state.editing});
+  },
+
+  handleGroupEditAbortClick: function(event) {
+    event.stopPropagation();
+    this.setState({editing: false});
+  },
+
+  handleGroupEditSaveClick: function(event) {
+    event.stopPropagation();
+    this.setState({editing: false});
+    this.props.onGroupTitleChange(this.props.group.id, this.state.newTitle);
+  },
+
+  handleGroupExpandClick: function(event) {
     event.stopPropagation();
     this.setState({expanded: !this.state.expanded});
+  },
+
+  handleGroupTitleInputKey: function(event) {
+    if (event.keyCode == 13) {
+      this.setState({editing: false});
+      this.props.onGroupTitleChange(this.props.group.id, this.state.newTitle);
+    }
   }
 });

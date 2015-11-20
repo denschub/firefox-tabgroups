@@ -16,6 +16,10 @@ const Actions = {
     });
   },
 
+  renameGroup: function(groupID, title) {
+    addon.port.emit("Group:Rename", {groupID, title});
+  },
+
   selectGroup: function(groupID) {
     addon.port.emit("Group:Select", {groupID});
   },
@@ -34,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         onGroupAddClick: Actions.addGroup,
         onGroupClick: Actions.selectGroup,
         onGroupCloseClick: Actions.closeGroup,
+        onGroupTitleChange: Actions.renameGroup,
         onTabClick: Actions.selectTab,
         uiHeightChanged: Actions.uiHeightChanged
       })
