@@ -22,11 +22,9 @@ task("lint", ["build"], {async: true}, () => {
   }, complete);
 });
 
-desc("Builds the source and starts a test installation");
+desc("Builds the source and starts a test installation. You can specify jpm parameters with 'JPM_PARAMS=\"...\" jake run'");
 task("run", ["build"], {async: true}, () => {
-  console.log("Note: specify jpm parameters with 'jake run params=\"...\"'");
-
-  jake.exec([`cd ${DIST_DIR}; jpm run ${process.env.params}`], {
+  jake.exec([`cd ${DIST_DIR}; jpm run ${process.env.JPM_PARAMS}`], {
     interactive: true
   }, complete);
 });
