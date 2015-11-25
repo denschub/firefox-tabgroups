@@ -50,7 +50,7 @@ TabGroups.prototype = {
   },
 
   createPanelButton: function() {
-    let iconBase = "chrome://tabgroups/content/icons/togglebutton/";
+    let iconBase = "chrome://simplified-tabgroups/content/icons/togglebutton/";
     this._panelButton = ToggleButton({
       id: "tabgroups-show",
       icon: {

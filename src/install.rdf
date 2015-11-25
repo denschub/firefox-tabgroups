@@ -17,17 +17,17 @@
       </Description>
     </em:targetApplication>
 
-    <em:name>Tab Groups</em:name>
+    <em:name>Simplified Tab Groups</em:name>
     <em:description>Provides tab grouping features similar to the removed TabView/TabGroups/Panorama features.</em:description>
     <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
     <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
-    <em:iconURL>chrome://tabgroups/content/icons/extension-32.png</em:iconURL>
-    <em:icon64URL>chrome://tabgroups/content/icons/extension-32.png</em:icon64URL>
+    <em:iconURL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:iconURL>
+    <em:icon64URL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:icon64URL>
 
     <em:localized>
       <Description>
         <em:locale>de-DE</em:locale>
-        <em:name>Tab-Gruppen</em:name>
+        <em:name>Einfache Tab-Gruppen</em:name>
         <em:description>Ermöglicht die Gruppierung von Tabs ähnlich den entfernten Panorama-Funktionen</em:description>
       </Description>
     </em:localized>
