@@ -1,5 +1,5 @@
-Tab Groups for Firefox
-======================
+Simplified Tab Groups for Firefox
+=================================
 
 This project aims to provide a simple add-on to replace some functionalities
 from TabView/Tab Groups/Panorama which were removed from Firefox due to a lot
