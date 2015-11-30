@@ -254,6 +254,7 @@ SessionStorage.prototype = {
    * @returns {Object}
    */
   _setTabData: function(tab, data) {
+    this._stopTabView(tab.ownerDocument.defaultView);
     this._store.setTabValue(
       tab,
       "tabview-tab",
@@ -293,6 +294,7 @@ SessionStorage.prototype = {
    * @returns {Object}
    */
   _setGroupsData: function(chromeWindow, data) {
+    this._stopTabView(chromeWindow);
     this._store.setWindowValue(
       chromeWindow,
       "tabview-group",
@@ -331,11 +333,26 @@ SessionStorage.prototype = {
    * @returns {Object}
    */
   _setCurrentGroupData: function(chromeWindow, data) {
+    this._stopTabView(chromeWindow);
     this._store.setWindowValue(
       chromeWindow,
       "tabview-groups",
       JSON.stringify(data)
     );
+  },
+
+  /**
+   * Deinitializes the TabView frame from the Tab Groups add-on, so that it
+   * reconstructs any changed data by us properly when it is accessed again.
+   * The _deinitFrame method only exists with that add-on enabled, and it
+   * will no-op if the frame isn't already initialized.
+   *
+   * @param {ChromeWindow} chromeWindow
+   */
+  _stopTabView: function(chromeWindow) {
+    if(chromeWindow.TabView && chromeWindow.TabView._deinitFrame) {
+      chromeWindow.TabView._deinitFrame();
+    }
   },
 
   /**
