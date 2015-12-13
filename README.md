@@ -47,8 +47,9 @@ Assuming you have Node.js installed on your machine, building this project is
 rather easy.
 
 1. Install the dependencies: `npm install`.
-2. Run `jake build` to build all source files into the `dist/` directory or run
-   `jake run` to build the add-on and start a Firefox instance for testing.
+2. Run `./node_modules/.bin/jake build` to build all source files into the
+   `dist/` directory or run `./node_modules/.bin/jake run` to build the add-on
+   and start a Firefox instance for testing.
 
 `jake run` uses `jpm` and you can pass additional parameters to it by setting
 an environment variable, for example: `JPM_PARAMS="-b nightly" jake run`
