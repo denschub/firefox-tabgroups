@@ -43,8 +43,8 @@ tabs...
 Building
 --------
 
-Assuming you have Node.js installed on your machine, building this project is
-rather easy.
+Assuming you have Node.js v5 installed on your machine, building this project
+is rather easy.
 
 1. Install the dependencies: `npm install`.
 2. Run `./node_modules/.bin/jake build` to build all source files into the
