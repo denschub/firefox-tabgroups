@@ -29,7 +29,19 @@
         <em:locale>de-DE</em:locale>
         <em:name>Einfache Tab-Gruppen</em:name>
         <em:description>Ermöglicht die Gruppierung von Tabs ähnlich den entfernten Panorama-Funktionen</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
       </Description>
     </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>Simplified Tab Groups</em:name>
+        <em:description>Permet de remplacer la gestion des groupes d'onglets supprimée suite à l'abandon de Panorama.</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
+      </Description>
+    </em:localized>
+
   </Description>
 </RDF>
