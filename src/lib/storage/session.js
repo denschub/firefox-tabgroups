@@ -36,7 +36,8 @@ SessionStorage.prototype = {
       groups.push({
         active: group.id == currentGroup.activeGroupId,
         id: group.id,
-        title: group.title
+        title: group.title,
+        selectedIndex: group.selectedIndex
       });
     }
 
@@ -52,6 +53,7 @@ SessionStorage.prototype = {
   getTabs: function(chromeWindow) {
     let browser = TabsUtils.getTabBrowser(chromeWindow);
     let tabs = [];
+    let currentGroup = this.getCurrentGroup(chromeWindow);
 
     for (let tabIndex = 0; tabIndex < browser.tabs.length; tabIndex++) {
       let tab = browser.tabs[tabIndex];
@@ -62,7 +64,7 @@ SessionStorage.prototype = {
         continue;
       }
 
-      let group = this.getCurrentGroup(chromeWindow);
+      let group = currentGroup;
       if (tabData && tabData.groupID) {
         group = tabData.groupID;
       } else {
@@ -172,7 +174,8 @@ SessionStorage.prototype = {
     let groupID = this.getNextGroupID(chromeWindow);
     groups[groupID] = {
       id: groupID,
-      title: title
+      title: title,
+      selectedIndex: 0
     };
 
     let currentGroups = this._getCurrentGroupData(chromeWindow);
@@ -232,6 +235,34 @@ SessionStorage.prototype = {
     let groupsData = this._getGroupsData(chromeWindow);
     groupsData[groupID].title = title;
     this._setGroupsData(chromeWindow, groupsData);
+  },
+
+  /**
+   * Get the selected tab index for a group.
+   *
+   * @param {ChromeWindow} chromeWindow
+   * @param {Number} groupID - the groupID
+   */
+  getGroupSelectedIndex: function(chromeWindow, groupID) {
+    let groupsData = this._getGroupsData(chromeWindow);
+    let currentGroup = groupsData[groupID];
+    return currentGroup == null ? 0 : currentGroup.selectedIndex;
+  },
+
+  /**
+   * Set the selected tab index for a group.
+   *
+   * @param {ChromeWindow} chromeWindow
+   * @param {Number} groupID - the groupID
+   * @param {Number} index - the new selected index
+   */
+  setGroupSelectedIndex: function(chromeWindow, groupID, index) {
+    let groupsData = this._getGroupsData(chromeWindow);
+    let currentGroup = groupsData[groupID];
+    if (currentGroup != null) {
+      currentGroup.selectedIndex = index;
+      this._setGroupsData(chromeWindow, groupsData);
+    }
   },
 
   /**
