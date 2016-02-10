@@ -9,17 +9,29 @@ TabManager.prototype = {
    * @param {ChromeWindow} chromeWindow
    * @returns {Object}
    */
-  getGroupsWithTabs: function(chromeWindow) {
+  getGroupsWithTabs: function(chromeWindow, sort) {
     let groups = this._storage.getGroups(chromeWindow);
     let tabs = this._storage.getTabs(chromeWindow);
 
-    return groups.map((group) => {
+    let retGroups = groups.map((group) => {
       return Object.assign({}, group, {
         tabs: tabs.filter((tab) => {
           return tab.group == group.id;
         })
       });
     });
+
+    if (sort) {
+      retGroups.sort((a, b) => {
+        if (a.title == b.title) {
+          return 0;
+        }
+
+        return a.title < b.title ? -1 : 1;
+      });
+    }
+
+    return retGroups;
   },
 
   /**

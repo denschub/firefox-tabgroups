@@ -135,7 +135,7 @@ TabGroups.prototype = {
   },
 
   refreshUi: function() {
-    let groups = this._tabs.getGroupsWithTabs(this._getWindow());
+    let groups = this._tabs.getGroupsWithTabs(this._getWindow(), Prefs.prefs.enableAlphabeticSort);
 
     this._groupsPanel.port.emit("Groups:Changed", groups);
   },

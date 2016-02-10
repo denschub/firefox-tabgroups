@@ -17,6 +17,12 @@
       "title": "Listen to Ctrl/Cmd-Shift-E",
       "type": "bool",
       "value": true
+    },
+    {
+      "name": "enableAlphabeticSort",
+      "title": "Enable alphabetic sorting",
+      "type": "bool",
+      "value": false
     }
   ]
 }
