@@ -5,6 +5,7 @@
 * Added a migration override so tab groups won't be migrated away.
 * Added compatiblity with Quicksavers Tab Groups add-on.
 * Added keyboard shortcuts to switch between groups. (PR [#23](https://github.com/denschub/firefox-tabgroups/pull/23))
+* Added option for alphabetic tab group sorting. (PR [#24](https://github.com/denschub/firefox-tabgroups/pull/24))
 
 ## Refactorings
 

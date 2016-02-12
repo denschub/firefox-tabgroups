@@ -23,6 +23,12 @@
       "title": "Listen to Ctrl/Cmd-~ and Ctrl/Cmd-Shift-~",
       "type": "bool",
       "value": true
+    },
+    {
+      "name": "enableAlphabeticSort",
+      "title": "Enable alphabetic sorting",
+      "type": "bool",
+      "value": false
     }
   ]
 }
