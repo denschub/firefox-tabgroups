@@ -4,7 +4,7 @@
     <em:id>tabgroups@schub.io</em:id>
     <em:type>2</em:type>
     <em:bootstrap>true</em:bootstrap>
-    <em:version>0.1.1</em:version>
+    <em:version>0.2.0</em:version>
     <em:optionsURL>data:text/xml,&lt;placeholder/&gt;</em:optionsURL>
     <em:optionsType>2</em:optionsType>
 
@@ -12,24 +12,36 @@
       <Description>
         <!-- Firefox -->
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>45.0a1</em:minVersion>
+        <em:minVersion>44.0a1</em:minVersion>
         <em:maxVersion>45.0</em:maxVersion>
       </Description>
     </em:targetApplication>
 
-    <em:name>Tab Groups</em:name>
+    <em:name>Simplified Tab Groups</em:name>
     <em:description>Provides tab grouping features similar to the removed TabView/TabGroups/Panorama features.</em:description>
     <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
     <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
-    <em:iconURL>chrome://tabgroups/content/icons/extension-32.png</em:iconURL>
-    <em:icon64URL>chrome://tabgroups/content/icons/extension-32.png</em:icon64URL>
+    <em:iconURL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:iconURL>
+    <em:icon64URL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:icon64URL>
 
     <em:localized>
       <Description>
         <em:locale>de-DE</em:locale>
-        <em:name>Tab-Gruppen</em:name>
+        <em:name>Einfache Tab-Gruppen</em:name>
         <em:description>Ermöglicht die Gruppierung von Tabs ähnlich den entfernten Panorama-Funktionen</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
       </Description>
     </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>fr-FR</em:locale>
+        <em:name>Simplified Tab Groups</em:name>
+        <em:description>Permet de remplacer la gestion des groupes d'onglets supprimée suite à l'abandon de Panorama.</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
+      </Description>
+    </em:localized>
+
   </Description>
 </RDF>

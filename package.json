@@ -1,22 +1,10 @@
 {
-  "id": "tabgroups@schub.io",
   "name": "tabgroups",
-  "version": "0.1.1",
-  "title": "Tab Groups",
-  "description": "An add-on to replace the removed TabView/TabGroups/Panorama.",
-  "author": "Dennis Schubert <mozilla@dennis-schubert.de>",
+  "author": "",
   "license": "MIT",
-  "main": "index.js",
-  "icon": "chrome://tabgroups/content/icons/extension-32.png",
-  "permissions": {
-    "private-browsing": true
-  },
-  "preferences": [
-    {
-      "name": "bindPanoramaShortcut",
-      "title": "Listen to Ctrl/Cmd-Shift-E",
-      "type": "bool",
-      "value": true
-    }
-  ]
+  "private": true,
+  "devDependencies": {
+    "jake": "^8.0.12",
+    "jpm": "^1.0.3"
+  }
 }

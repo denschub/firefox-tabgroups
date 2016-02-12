@@ -1,0 +1,34 @@
+{
+  "id": "tabgroups@schub.io",
+  "name": "tabgroups",
+  "version": "0.2.0",
+  "title": "Simplified Tab Groups",
+  "description": "An add-on to replace the removed TabView/TabGroups/Panorama.",
+  "author": "Dennis Schubert <mozilla@dennis-schubert.de>",
+  "license": "MIT",
+  "main": "index.js",
+  "icon": "chrome://simplified-tabgroups/content/icons/extension-32.png",
+  "permissions": {
+    "private-browsing": true
+  },
+  "preferences": [
+    {
+      "name": "bindPanoramaShortcut",
+      "title": "Listen to Ctrl/Cmd-Shift-E",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "bindNavigationShortcut",
+      "title": "Listen to Ctrl/Cmd-~ and Ctrl/Cmd-Shift-~",
+      "type": "bool",
+      "value": true
+    },
+    {
+      "name": "enableAlphabeticSort",
+      "title": "Enable alphabetic sorting",
+      "type": "bool",
+      "value": false
+    }
+  ]
+}

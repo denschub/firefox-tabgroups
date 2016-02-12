@@ -9,17 +9,29 @@ TabManager.prototype = {
    * @param {ChromeWindow} chromeWindow
    * @returns {Object}
    */
-  getGroupsWithTabs: function(chromeWindow) {
+  getGroupsWithTabs: function(chromeWindow, sort) {
     let groups = this._storage.getGroups(chromeWindow);
     let tabs = this._storage.getTabs(chromeWindow);
 
-    return groups.map((group) => {
+    let retGroups = groups.map((group) => {
       return Object.assign({}, group, {
         tabs: tabs.filter((tab) => {
           return tab.group == group.id;
         })
       });
     });
+
+    if (sort) {
+      retGroups.sort((a, b) => {
+        if (a.title.toLowerCase() == b.title.toLowerCase()) {
+          return 0;
+        }
+
+        return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
+      });
+    }
+
+    return retGroups;
   },
 
   /**
@@ -54,6 +66,10 @@ TabManager.prototype = {
       return;
     }
 
+    this.updateCurrentSelectedTab(chromeWindow);
+
+    let lastSelected = this._storage.getGroupSelectedIndex(chromeWindow, groupID);
+
     let tabs = this._storage.getTabIndexesByGroup(tabBrowser, groupID);
 
     let selectedTab;
@@ -64,7 +80,7 @@ TabManager.prototype = {
     } else if (tabIndex) {
       selectedTab = tabBrowser.tabs[tabIndex];
     } else {
-      selectedTab = tabBrowser.tabs[tabs[tabIndex]];
+      selectedTab = tabBrowser.tabs[lastSelected < tabs.length ? tabs[lastSelected] : tabs[0]];
     }
 
     this._storage.setCurrentGroup(chromeWindow, groupID);
@@ -73,6 +89,49 @@ TabManager.prototype = {
     tabBrowser.showOnlyTheseTabs(tabs.map((tab) => {
       return tabBrowser.tabs[tab];
     }));
+  },
+
+  /**
+   * Selects the next or previous group in the list
+   *
+   * @param {ChromeWindow} chromeWindow
+   * @param {Number} direction
+   */
+  selectNextPrevGroup: function(chromeWindow, tabBrowser, direction) {
+    let currentGroup = this._storage.getCurrentGroup(chromeWindow);
+    let groups = this._storage.getGroups(chromeWindow);
+    if (groups.length == 0) {
+      return;
+    }
+
+    let index = groups.findIndex((group) => {
+      return group.id == currentGroup;
+    });
+
+    if (index == -1) {
+      return;
+    }
+
+    index = (index + direction + groups.length) % groups.length;
+    this.selectGroup(chromeWindow, tabBrowser, groups[index].id);
+  },
+
+  /**
+   * Updates the currently selected index for the given window
+   *
+   * @param {ChromeWindow} chromeWindow
+   */
+  updateCurrentSelectedTab: function(chromeWindow) {
+    let tabs = this._storage.getTabs(chromeWindow);
+    let curtab = tabs.find((tab) => {
+      return tab.active;
+    });
+
+    let curindex = tabs.filter((tab) => {
+      return tab.group == curtab.group;
+    }).indexOf(curtab);
+
+    this._storage.setGroupSelectedIndex(chromeWindow, curtab.group, curindex);
   },
 
   /**
