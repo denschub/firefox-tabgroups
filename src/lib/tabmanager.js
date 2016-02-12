@@ -23,11 +23,11 @@ TabManager.prototype = {
 
     if (sort) {
       retGroups.sort((a, b) => {
-        if (a.title == b.title) {
+        if (a.title.toLowerCase() == b.title.toLowerCase()) {
           return 0;
         }
 
-        return a.title < b.title ? -1 : 1;
+        return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
       });
     }
 
