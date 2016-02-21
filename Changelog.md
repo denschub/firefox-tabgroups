@@ -1,5 +1,7 @@
 # 0.2.1
 
+* Don't try to set the groups active tab if an app tab is active. (Issue [#27](https://github.com/denschub/firefox-tabgroups/issues/27))
+
 # 0.2.0
 
 ## Features
