@@ -127,11 +127,13 @@ TabManager.prototype = {
       return tab.active;
     });
 
-    let curindex = tabs.filter((tab) => {
-      return tab.group == curtab.group;
-    }).indexOf(curtab);
+    if (curtab) {
+      let curindex = tabs.filter((tab) => {
+        return tab.group == curtab.group;
+      }).indexOf(curtab);
 
-    this._storage.setGroupSelectedIndex(chromeWindow, curtab.group, curindex);
+      this._storage.setGroupSelectedIndex(chromeWindow, curtab.group, curindex);
+    }
   },
 
   /**
