@@ -36,6 +36,9 @@ const Group = React.createClass({
           onChange: (event) => {
             this.setState({newTitle: event.target.value});
           },
+          onClick: (event) => {
+            event.stopPropagation();
+          },
           onKeyUp: this.handleGroupTitleInputKey
         }
       );
