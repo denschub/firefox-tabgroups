@@ -126,6 +126,8 @@
     // Disallow the omission of parentheses when invoking a constructor with no
     // arguments.
     "new-parens": 2,
+    // Disallow the omission of parentheses on fat arrow functions.
+    "arrow-parens": 2,
     // Disallow use of the Array constructor.
     "no-array-constructor": 2,
     // Allow use of bitwise operators.
