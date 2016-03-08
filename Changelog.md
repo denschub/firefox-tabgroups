@@ -3,6 +3,7 @@
 ## Bug fixes
 
 * Clicking the input field while renaming will no longer select the group. (PR [28](https://github.com/denschub/firefox-tabgroups/pull/28))
+* Use `label` instead of `visibleLabel` since the latter was removed in bug 1247920.
 
 # 0.2.1
 

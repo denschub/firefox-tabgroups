@@ -76,7 +76,7 @@ SessionStorage.prototype = {
         group: group,
         icon: browser.getIcon(tab),
         index: tabIndex,
-        title: tab.visibleLabel
+        title: tab.label
       });
     }
 
