@@ -4,7 +4,7 @@
     <em:id>tabgroups@schub.io</em:id>
     <em:type>2</em:type>
     <em:bootstrap>true</em:bootstrap>
-    <em:version>0.3.0</em:version>
+    <em:version>0.4.0-dev</em:version>
     <em:optionsURL>data:text/xml,&lt;placeholder/&gt;</em:optionsURL>
     <em:optionsType>2</em:optionsType>
 
