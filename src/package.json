@@ -1,7 +1,7 @@
 {
   "id": "tabgroups@schub.io",
   "name": "tabgroups",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "title": "Simplified Tab Groups",
   "description": "An add-on to replace the removed TabView/TabGroups/Panorama.",
   "author": "Dennis Schubert <mozilla@dennis-schubert.de>",
