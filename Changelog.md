@@ -1,5 +1,9 @@
 # 0.3.0
 
+## Bug fixes
+
+* Clicking the input field while renaming will no longer select the group. (PR [28](https://github.com/denschub/firefox-tabgroups/pull/28))
+
 # 0.2.1
 
 * Don't try to set the groups active tab if an app tab is active. (Issue [#27](https://github.com/denschub/firefox-tabgroups/issues/27))
