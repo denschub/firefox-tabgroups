@@ -1,3 +1,9 @@
+# 0.4.0
+
+## Features
+
+* You can now drag and drop tabs in the panel to move them between groups. Dragging a tab onto the "Create new group" button will create a new group with that tab. (PR [32](https://github.com/denschub/firefox-tabgroups/pull/32))
+
 # 0.3.0
 
 ## Bug fixes
