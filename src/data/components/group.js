@@ -2,9 +2,12 @@ const Group = React.createClass({
   propTypes: {
     group: React.PropTypes.object.isRequired,
     onGroupClick: React.PropTypes.func,
+    onGroupDrop: React.PropTypes.func,
     onGroupCloseClick: React.PropTypes.func,
     onGroupTitleChange: React.PropTypes.func,
     onTabClick: React.PropTypes.func,
+    onTabDrag: React.PropTypes.func,
+    onTabDragStart: React.PropTypes.func,
     uiHeightChanged: React.PropTypes.func
   },
 
@@ -12,6 +15,8 @@ const Group = React.createClass({
     return {
       editing: false,
       expanded: false,
+      draggingOverCounter: 0,
+      dragSourceGroup: false,
       newTitle: this.getTitle()
     };
   },
@@ -22,8 +27,8 @@ const Group = React.createClass({
 
   getTitle: function() {
     return this.props.group.title || (
-      addon.options.l10n.unnamed_group + " " + this.props.group.id
-    );
+        addon.options.l10n.unnamed_group + " " + this.props.group.id
+      );
   },
 
   render: function() {
@@ -49,6 +54,8 @@ const Group = React.createClass({
     let groupClasses = classNames({
       active: this.props.group.active,
       editing: this.state.editing,
+      draggingOver: this.state.draggingOverCounter !== 0,
+      dragSourceGroup: this.state.dragSourceGroup,
       expanded: this.state.expanded,
       group: true
     });
@@ -57,7 +64,11 @@ const Group = React.createClass({
       React.DOM.li(
         {
           className: groupClasses,
-          onClick: this.handleGroupClick
+          onClick: this.handleGroupClick,
+          onDragOver: this.handleGroupDragOver,
+          onDragEnter: this.handleGroupDragEnter,
+          onDragLeave: this.handleGroupDragLeave,
+          onDrop: this.handleGroupDrop
         },
         React.DOM.span(
           {
@@ -81,7 +92,10 @@ const Group = React.createClass({
           TabList,
           {
             tabs: this.props.group.tabs,
-            onTabClick: this.props.onTabClick
+            onTabClick: this.props.onTabClick,
+            onTabDrag: this.props.onTabDrag,
+            onTabDragStart: this.props.onTabDragStart,
+            onTabDragEnd: this.props.onTabDragEnd
           }
         )
       )
@@ -124,5 +138,51 @@ const Group = React.createClass({
       this.setState({editing: false});
       this.props.onGroupTitleChange(this.props.group.id, this.state.newTitle);
     }
+  },
+
+  handleGroupDrop: function(event) {
+    event.stopPropagation();
+
+    this.setState({draggingOverCounter: 0});
+
+    let sourceGroup = event.dataTransfer.getData("tab/group");
+    let tabIndex = event.dataTransfer.getData("tab/index");
+
+    this.props.onGroupDrop(
+      sourceGroup,
+      tabIndex,
+      this.props.group.id
+    );
+  },
+
+  handleGroupDragOver: function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+    return false;
+  },
+
+  handleGroupDragEnter: function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    let sourceGroupId = event.dataTransfer.getData("tab/group");
+    let isSourceGroup = sourceGroupId == this.props.group.id;
+    this.setState({dragSourceGroup: isSourceGroup});
+
+    let draggingCounterValue = (this.state.draggingOverCounter == 1) ? 2 : 1;
+    this.setState({draggingOverCounter: draggingCounterValue});
+  },
+
+  handleGroupDragLeave: function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (this.state.draggingOverCounter == 2) {
+      this.setState({draggingOverCounter: 1});
+    } else if (this.state.draggingOverCounter == 1) {
+      this.setState({draggingOverCounter: 0});
+    }
+
+    return false;
   }
 });

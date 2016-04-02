@@ -6,6 +6,7 @@ ul, li {
 
   li {
     list-style-type: none;
+    cursor: move;
   }
 
 .group-title {
@@ -47,6 +48,16 @@ ul, li {
   .group:hover, .tab:hover {
     background-color: rgba(0, 0, 0, 0.06);
     border-color: rgba(0, 0, 0, 0.12);
+  }
+
+  .group.dragSourceGroup {
+    border: inherit;
+    background-color : inherit;
+  }
+
+   .group.draggingOver, .draggingOver {
+    border: 1px dashed #ccc;
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
 .tab-list {

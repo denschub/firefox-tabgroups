@@ -53,6 +53,25 @@ TabManager.prototype = {
   },
 
   /**
+   * Move tab beetwen groups
+   *
+   * @param {ChromeWindow} chromeWindow
+   * @param {TabBrowser} tabBrowser
+   * @param {Number} tabIndex - the tabs index
+   * @param {Number} targetGroupID - target groupID (where to move tab)
+   */
+  moveTabToGroup: function(chromeWindow, tabBrowser, tabIndex, targetGroupID) {
+    let tab = tabBrowser.tabs[tabIndex];
+    if (tab.groupID === targetGroupID) {
+      return;
+    }
+    this._storage.setTabGroup(tab, targetGroupID);
+    if (tab.selected) {
+      this.selectGroup(chromeWindow, tabBrowser, targetGroupID);
+    }
+  },
+
+  /**
    * Selects a given group.
    *
    * @param {ChromeWindow} chromeWindow
@@ -69,7 +88,6 @@ TabManager.prototype = {
     this.updateCurrentSelectedTab(chromeWindow);
 
     let lastSelected = this._storage.getGroupSelectedIndex(chromeWindow, groupID);
-
     let tabs = this._storage.getTabIndexesByGroup(tabBrowser, groupID);
 
     let selectedTab;
@@ -154,6 +172,38 @@ TabManager.prototype = {
    */
   addGroup: function(chromeWindow) {
     this._storage.addGroup(chromeWindow);
+  },
+
+  /**
+   * Adds a group with associated tab
+   *
+   * @param {ChromeWindow} chromeWindow
+   * @param {TabBrowser} tabBrowser
+   * @param {Number} tabIndex - the tab to place into group
+   */
+  addGroupWithTab: function(chromeWindow, tabBrowser, tabIndex) {
+    this._storage.addGroup(chromeWindow);
+    let group = this.getRecentlyAddedGroup(chromeWindow);
+    this.moveTabToGroup(
+      chromeWindow,
+      tabBrowser,
+      tabIndex,
+      group.id
+    );
+  },
+
+  /**
+   * Return recently added group
+   *
+   * @param {ChromeWindow} chromeWindow
+   */
+  getRecentlyAddedGroup: function(chromeWindow) {
+    let currentGoups = this._storage.getGroups(chromeWindow);
+    let recentlyAddedGroup = null;
+    if (currentGoups.length > 0) {
+      recentlyAddedGroup = currentGoups[currentGoups.length - 1];
+    }
+    return recentlyAddedGroup;
   },
 
   /**
