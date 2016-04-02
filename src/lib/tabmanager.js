@@ -66,8 +66,9 @@ TabManager.prototype = {
       return;
     }
     this._storage.setTabGroup(tab, targetGroupID);
-    let currentGroup = this._storage.getCurrentGroup(chromeWindow);
-    this.selectGroup(chromeWindow, tabBrowser, currentGroup);
+    if (tab.selected) {
+      this.selectGroup(chromeWindow, tabBrowser, targetGroupID);
+    }
   },
 
   /**
