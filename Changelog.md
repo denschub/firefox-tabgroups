@@ -1,5 +1,9 @@
 # 0.5.0
 
+## Refactorings
+
+* Use the default favicon instead of no favicon at all. (PR [35](https://github.com/denschub/firefox-tabgroups/pull/35))
+
 # 0.4.0
 
 ## Features
