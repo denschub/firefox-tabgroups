@@ -7,14 +7,11 @@ const Tab = React.createClass({
   },
 
   render: function() {
-    let favicon;
-    if (this.props.tab.icon) {
-      favicon = React.DOM.img({
-        alt: "",
-        className: "tab-icon",
-        src: this.props.tab.icon
-      });
-    }
+    let favicon = React.DOM.img({
+      alt: "",
+      className: "tab-icon",
+      src: this.props.tab.icon
+    });
 
     let tabClasses = classNames({
       active: this.props.tab.active,
