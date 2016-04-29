@@ -57,14 +57,16 @@ TabGroups.prototype = {
 
   createPanelButton: function() {
     let iconBase = "chrome://simplified-tabgroups/content/icons/togglebutton/";
+    let toolBarButton = Utils.themeSwitch({
+      dark: iconBase + "icon-inverted-32.png",
+      light: iconBase + "icon-32.png"
+    });
+
     this._panelButton = ToggleButton({
       id: "tabgroups-show",
       icon: {
-        "16": Utils.themeSwitch({
-          dark: iconBase + "icon-inverted-32.png",
-          light: iconBase + "icon-32.png"
-        }),
-        "32": iconBase + "icon-32.png",
+        "16": toolBarButton,
+        "32": toolBarButton,
         "64": iconBase + "icon-64.png"
       },
       label: _("panelButton_label")
