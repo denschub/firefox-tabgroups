@@ -1,3 +1,14 @@
+# 0.5.0
+
+## Bug fixes
+
+* Use the inverted toolbar icon if needed on high resolutions.
+
+## Refactorings
+
+* Use the default favicon instead of no favicon at all. (PR [35](https://github.com/denschub/firefox-tabgroups/pull/35))
+* Removed the Panorama migration to avoid breakage in Firefox 52
+
 # 0.4.0
 
 ## Features
