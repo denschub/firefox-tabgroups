@@ -12,7 +12,4 @@ const COMMONJS_URI = "resource://gre/modules/commonjs";
 const { require } = Cu.import(COMMONJS_URI + "/toolkit/require.js", {});
 const { Bootstrap } = require(COMMONJS_URI + "/sdk/addon/bootstrap.js");
 
-const { MigrationOverride } = require(rootURI + "lib/migrationoverride");
-MigrationOverride();
-
 var { startup, shutdown, install, uninstall } = new Bootstrap(rootURI);
