@@ -1,3 +1,7 @@
+# 0.5.1
+
+Set `multiprocessCompatible` to `true`!
+
 # 0.5.0
 
 ## Bug fixes
