@@ -23,6 +23,7 @@
     <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
     <em:iconURL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:iconURL>
     <em:icon64URL>chrome://simplified-tabgroups/content/icons/extension-32.png</em:icon64URL>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible>
 
     <em:localized>
       <Description>
