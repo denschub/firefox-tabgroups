@@ -2,6 +2,7 @@ const GroupList = (() => {
   const GroupListStandalone = React.createClass({
     propTypes: {
       groups: React.PropTypes.object.isRequired,
+      closeTimeout: React.PropTypes.number,
       onGroupAddClick: React.PropTypes.func,
       onGroupAddDrop: React.PropTypes.func,
       onGroupClick: React.PropTypes.func,
@@ -25,6 +26,7 @@ const GroupList = (() => {
           return React.createElement(Group, {
             key: group.id,
             group: group,
+            closeTimeout: this.props.closeTimeout,
             onGroupClick: this.props.onGroupClick,
             onGroupDrop: this.props.onGroupDrop,
             onGroupCloseClick: this.props.onGroupCloseClick,
@@ -48,7 +50,8 @@ const GroupList = (() => {
 
   return ReactRedux.connect((state) => {
     return {
-      groups: state.get("tabgroups")
+      groups: state.get("tabgroups"),
+      closeTimeout: state.get("closeTimeout")
     };
   }, ActionCreators)(GroupListStandalone);
 })();

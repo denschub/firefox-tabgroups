@@ -29,6 +29,13 @@
       "title": "Enable alphabetic sorting",
       "type": "bool",
       "value": false
+    },
+    {
+      "name": "groupCloseTimeout",
+      "title": "Closing group delay",
+      "description": "Delay in seconds to wait before the group gets actually closed.",
+      "type": "integer",
+      "value": 3
     }
   ]
 }

@@ -1,5 +1,6 @@
 const Group = React.createClass({
   propTypes: {
+    closeTimeout: React.PropTypes.number,
     group: React.PropTypes.object.isRequired,
     onGroupClick: React.PropTypes.func,
     onGroupDrop: React.PropTypes.func,
@@ -13,6 +14,7 @@ const Group = React.createClass({
 
   getInitialState: function() {
     return {
+      closing: false,
       editing: false,
       expanded: false,
       draggingOverCounter: 0,
@@ -54,6 +56,7 @@ const Group = React.createClass({
     let groupClasses = classNames({
       active: this.props.group.active,
       editing: this.state.editing,
+      closing: this.state.closing,
       draggingOver: this.state.draggingOverCounter !== 0,
       dragSourceGroup: this.state.dragSourceGroup,
       expanded: this.state.expanded,
@@ -78,13 +81,15 @@ const Group = React.createClass({
           React.createElement(
             GroupControls,
             {
+              closing: this.state.closing,
               editing: this.state.editing,
               expanded: this.state.expanded,
               onClose: this.handleGroupCloseClick,
               onEdit: this.handleGroupEditClick,
               onEditAbort: this.handleGroupEditAbortClick,
               onEditSave: this.handleGroupEditSaveClick,
-              onExpand: this.handleGroupExpandClick
+              onExpand: this.handleGroupExpandClick,
+              onUndoCloseClick: this.handleGroupCloseAbortClick
             }
           )
         ),
@@ -104,7 +109,19 @@ const Group = React.createClass({
 
   handleGroupCloseClick: function(event) {
     event.stopPropagation();
-    this.props.onGroupCloseClick(this.props.group.id);
+    this.setState({editing: false});
+    this.setState({closing: true});
+
+    let group = this;
+
+    if (this.props.closeTimeout == 0) {
+      group.props.onGroupCloseClick(group.props.group.id);
+      return;
+    }
+
+    setTimeout(function() {
+      group.props.onGroupCloseClick(group.props.group.id);
+    }, this.props.closeTimeout * 1000);
   },
 
   handleGroupClick: function(event) {
@@ -184,5 +201,11 @@ const Group = React.createClass({
     }
 
     return false;
+  },
+
+  handleGroupCloseAbortClick: function(event) {
+    event.stopPropagation();
+
+    this.setState({closing: false});
   }
 });

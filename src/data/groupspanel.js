@@ -70,3 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 addon.port.on("Groups:Changed", (tabgroups) => {
   store.dispatch(ActionCreators.setTabgroups(tabgroups));
 });
+
+addon.port.on("Groups:CloseTimeoutChanged", (timeout) => {
+  store.dispatch(ActionCreators.setGroupCloseTimeout(timeout));
+});

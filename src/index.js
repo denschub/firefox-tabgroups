@@ -37,6 +37,7 @@ TabGroups.prototype = {
 
   bindEvents: function() {
     this.bindHotkeyPreference();
+    this.bindGroupPreference();
     this.bindPanelButtonEvents();
     this.bindPanelEvents();
     this.bindTabEvents();
@@ -50,7 +51,8 @@ TabGroups.prototype = {
         l10n: Utils.getL10nStrings([
           "add_group",
           "unnamed_group"
-        ])
+        ]),
+        groupCloseTimeout: Prefs.prefs.groupCloseTimeout
       }
     });
   },
@@ -159,6 +161,16 @@ TabGroups.prototype = {
         }
       }
     });
+  },
+
+  bindGroupPreference: function() {
+    let emitCloseTimeoutChange = () => {
+      this._groupsPanel.port.emit("Groups:CloseTimeoutChanged", Prefs.prefs.groupCloseTimeout);
+    };
+
+    Prefs.on("groupCloseTimeout", emitCloseTimeoutChange);
+
+    emitCloseTimeoutChange();
   },
 
   bindPanelButtonEvents: function() {

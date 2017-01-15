@@ -1,5 +1,9 @@
 # 0.6.0
 
+## Features
+
+* Added a timeout when closing a group to restore a group when closed by accident (PR [34](https://github.com/denschub/firefox-tabgroups/pull/34))
+
 ## Bug fixes
 
 * Show the correct icon when using the dark compact theme
