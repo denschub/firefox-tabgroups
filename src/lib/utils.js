@@ -17,6 +17,19 @@ exports.getL10nStrings = function(keys) {
   return returnStrings;
 };
 
+function isDarkTheme() {
+  let currentTheme = PrefService.get("lightweightThemes.selectedThemeID");
+  switch (currentTheme) {
+    case "firefox-compact-dark@mozilla.org":
+      return true;
+    case "firefox-devedition@mozilla.org":
+      let devtoolsTheme = PrefService.get("devtools.theme");
+      return devtoolsTheme == "dark";
+    default:
+      return false;
+  }
+}
+
 /**
  * Used to switch stuff by the current design.
  *
@@ -24,16 +37,5 @@ exports.getL10nStrings = function(keys) {
  * @returns {Object} input.dark if a dark theme is used, .light otherwise
  */
 exports.themeSwitch = function(object) {
-  let currentTheme = PrefService.get("lightweightThemes.selectedThemeID");
-  let devtoolsTheme = PrefService.get("devtools.theme");
-
-  let retValue = object.light;
-  if (
-    currentTheme == "firefox-devedition@mozilla.org"
-    && devtoolsTheme == "dark"
-  ) {
-    retValue = object.dark;
-  }
-
-  return retValue;
+  return isDarkTheme() ? object.dark : object.light;
 };

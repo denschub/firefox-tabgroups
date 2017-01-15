@@ -1,5 +1,10 @@
 # 0.6.0
 
+## Bug fixes
+
+* Show the correct icon when using the dark compact theme
+* Fix invalid group selection after closing tabs (PR [51](https://github.com/denschub/firefox-tabgroups/pull/51))
+
 # 0.5.1
 
 Set `multiprocessCompatible` to `true`!
