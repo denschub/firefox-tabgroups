@@ -194,7 +194,9 @@ TabGroups.prototype = {
 
   bindTabEvents: function() {
     Tabs.on("activate", () => {
-      this._tabs.updateCurrentSelectedTab(this._getWindow());
+      let window = this._getWindow();
+      this._tabs.updateCurrentSelectedTab(window);
+      this._tabs.updateCurrentSelectedGroup(window);
     });
     Tabs.on("open", () => {
       this._tabs.updateCurrentSelectedTab(this._getWindow());
