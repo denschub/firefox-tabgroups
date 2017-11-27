@@ -20,7 +20,7 @@
     },
     {
       "name": "bindNavigationShortcut",
-      "title": "Listen to Ctrl/Cmd-~ and Ctrl/Cmd-Shift-~",
+      "title": "Listen to Ctrl-~ and Ctrl-Shift-~",
       "type": "bool",
       "value": true
     },

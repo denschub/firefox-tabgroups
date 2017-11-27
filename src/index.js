@@ -104,7 +104,7 @@ TabGroups.prototype = {
     }
 
     this._hotkeyNextGroup = Hotkey({
-      combo: "accel-`",
+      combo: "control-`",
       onPress: () => {
         this._tabs.selectNextPrevGroup(
           this._getWindow(),
@@ -114,7 +114,7 @@ TabGroups.prototype = {
       }
     });
     this._hotkeyPrevGroup = Hotkey({
-      combo: "accel-shift-`",
+      combo: "control-shift-`",
       onPress: () => {
         this._tabs.selectNextPrevGroup(
           this._getWindow(),
