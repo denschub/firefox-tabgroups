@@ -43,6 +43,24 @@
         <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
       </Description>
     </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>es-AR</em:locale>
+        <em:name>Grupos de pestañas simplificados</em:name>
+        <em:description>Provee la funcionalidad de gestionar grupos de pestañas similar a la funcionalidad removida de TabView/TabGroups/Panorama.</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
+      </Description>
+    </em:localized>
+    <em:localized>
+      <Description>
+        <em:locale>es-ES</em:locale>
+        <em:name>Grupos de pestañas simplificados</em:name>
+        <em:description>Provee la funcionalidad de gestionar grupos de pestañas similar a la funcionalidad removida de TabView/TabGroups/Panorama.</em:description>
+        <em:creator>Dennis Schubert &lt;mozilla@dennis-schubert.de&gt;</em:creator>
+        <em:homepageURL>https://github.com/denschub/firefox-tabgroups</em:homepageURL>
+      </Description>
+    </em:localized>
 
   </Description>
 </RDF>
