@@ -1,6 +1,10 @@
 Simplified Tab Groups for Firefox
 =================================
 
+**NOTE**: This project is currently unmaintained. If someone wants to take over, [check this discussion](https://github.com/denschub/firefox-tabgroups/issues/60#issuecomment-388541616) and drop me a note.
+
+---
+
 This project aims to provide a simple add-on to replace some functionalities
 from TabView/Tab Groups/Panorama which were removed from Firefox due to a lot
 of open bugs and a very low overall usage.
